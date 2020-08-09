@@ -1,0 +1,21 @@
+---
+layout: default
+toc: true
+---
+
+<article class="post">
+    <h1 class="post-title note info">{{ page.title }}</h1><br />
+    <time datetime="{{ page.date | date_to_xmlschema }}" class="post-date">{{ page.date | date_to_string }}</time>
+    <br />
+    <div id="toc"></div>
+    <br />
+    {{ content }}
+</article>
+
+<script src="{{ '/assets/js/toc.js' | relative_url }}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#toc').toc();
+    });
+</script>

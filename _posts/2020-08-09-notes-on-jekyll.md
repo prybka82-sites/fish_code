@@ -5,7 +5,9 @@ date:   2020-08-09 14:22:10 +0200
 categories: notes
 tags: notes linux windows jekyll
 ---
-# Installation on Linux Mint
+## Installation 
+
+### On Linux Mint
 
 - Installing Ruby
 
@@ -48,7 +50,7 @@ Checking Jekyll version
 jekyll --version
 {% endhighlight %}
 
-# Installation on Windows
+### On Windows
 
 * Installing Ruby and Ruby Gems
 
@@ -86,7 +88,7 @@ Checking Jekyll version:
 jekyll -v
 {% endhighlight %}
 
-# New page
+## New page
 
 Generating
 
@@ -109,7 +111,7 @@ Regenerating
 jekyll serve
 {% endhighlight %}
 
-# Project structure
+### Project structure
 
 - ``_posts`` folder -- all posts
 - ``_site`` folder -- the final version of the generated page (only for copying to the server: these files should not be edited)
@@ -118,7 +120,7 @@ jekyll serve
 - ``about.md`` file -- the About page content
 - ``index.md`` -- the main page
 
-# File structure
+### File structure
 
 Front matter
 
@@ -144,7 +146,7 @@ defaults:
       title: "New post"
 {% endhighlight %}
 
-# Posts
+### Posts
 
 Name must follow the format: ``RRRR-MM-DD-file-name.markdown`` or ``RRRR-MM-DD-file-name.md``.
 
@@ -176,7 +178,7 @@ The date in the parameter must be equal to the one in the file name.
 
 Posts may be grouped in subfolders.
 
-# Drafts
+### Drafts
 
 They are stored in ``_drafts`` folder.
 
@@ -192,7 +194,7 @@ Drafts are shown according to the file creation date.
 
 After moving the file from the ``_draft`` folder, a date must be added to its name.
 
-# Pages
+### Pages
 
 Pages may be stored in the main folder.
 
@@ -208,13 +210,13 @@ layout: "page"
 
 Routing to the page in main folder, e.g. 
 
-``http://127.0.0.1:4000/page-name``
+``http://127.0.0.1:4000/page-name.html``
 
-If the page is in a folder, e.g. ``_pages``, then the routing also is changed, e.g. 
+If the page is in a folder, e.g. ``pages`` (not ``_pages``!!!), then the routing also is changed, e.g. 
 
-``http://127.0.0.1:4000/pages/page-name``
+``http://127.0.0.1:4000/pages/page-name.html``
 
-# Categories
+### Categories
 
 Categories are part of front matter, e.g. 
 
@@ -230,7 +232,7 @@ A set of categories modify the routing, e.g.
 
 ``http://127.0.0.1:4000/cat1/cat2/cat3/file-name``
 
-# Permalinks
+### Permalinks
 
 These are routing patterns set on each page in the front matter, e.g.
 
@@ -258,7 +260,9 @@ It is also possible to add the extension of the parameter, e.g.
 :title.html
 {% endhighlight %}
 
-# Motifs
+## Customization 
+
+### Motifs
 
 See ``_config.yml`` file:
 
@@ -292,7 +296,7 @@ theme: jekyll-theme-midnight
 
 - start the server using ``bundle exec jekyll serve`` command
 
-# Layouts
+### Layouts
 
 Layouts are stored in the ``_layouts`` folder.
 
@@ -308,7 +312,7 @@ layout: song
 
 A layout is an HTML file containing a reference to a markdown file in the {% raw %}``{{ content }}``{% endraw %} parameter located under the front matter.
 
-**Layout inheritance**
+### Layout inheritance
 
 If ``BBB.html`` layout inherits from ``AAA.html``, the files shoud be structrued as follows:
 
@@ -330,9 +334,11 @@ layout: AAA
 Other elements...
 {% endhighlight %}
 
-# Variables
+## Variables and includes
 
-**Layout variables**: {% raw %}``{{ layout.variableName }}``{% endraw %}, e.g.
+### Layout variables 
+
+{% raw %}``{{ layout.variableName }}``{% endraw %}, e.g.
 
 {% highlight html %}
 {% raw %}
@@ -343,7 +349,9 @@ author: John
 {% endraw %}
 {% endhighlight %}
 
-**Page variables**: {% raw %}``{{ page.variableName }}``{% endraw %}, e.g. 
+### Page variables
+
+{% raw %}``{{ page.variableName }}``{% endraw %}, e.g. 
 
 - layout ``mySite.html``:
 
@@ -367,7 +375,9 @@ customVar: This is my custom variable
 Some content.
 {% endhighlight %}
 
-**Site** variable: {% raw %}``{{ site.variableName }}``{% endraw %}, e.g.
+### Site variable
+
+{% raw %}``{{ site.variableName }}``{% endraw %}, e.g.
 
 - ``_config.yml`` file:
 
@@ -387,7 +397,7 @@ Some variable of my own design: {{ site.myVar }}.
 {% endraw %}
 {% endhighlight %}
 
-# Includes
+### Includes
 
 Includes are layout elements in HTML stored in ``_includes`` folder.
 
@@ -417,7 +427,7 @@ Passing variables:
 {% endraw %}
 {% endhighlight %}
 
-# Loops
+## Loops
 
 _Example 1_
 
@@ -436,13 +446,19 @@ _Example 2_
 {% raw %}
 {% for post in site.posts %}
 <li>
-  <a href="{{ post.url }}">
-    {{ post.title }}
-  </a>
-<li>
+    {% if post.url == page.url %}
+    <string>{{ post.title }}</string>
+    {% else %}
+    <a href="{{site.baseurl}}{{ post.url }}">
+        {{ post.title }}
+    </a>
+    {% endif %}
+</li>
 {% endfor %}
 {% endraw %}
 {% endhighlight %}
+
+See also: [Linking a Series of Jekyll Posts](https://engineering.chrobinson.com/how-to/linking-a-series-of-jekyll-posts/).
 
 _Example 3_ (loops within pages) 
 
@@ -452,7 +468,7 @@ _Example 3_ (loops within pages)
 {% endraw %}
 {% endhighlight %}
 
-# Conditional statements
+## Conditional statements
 
 {% highlight html %}
 {% raw %}
@@ -466,7 +482,7 @@ _Example 3_ (loops within pages)
 {% endraw %}
 {% endhighlight %}
 
-Using conditional statements for styling hiperlinks:
+Using conditional statements for styling hyperlinks:
 
 {% highlight html %}
 {% raw %}
@@ -480,7 +496,7 @@ Using conditional statements for styling hiperlinks:
 {% endraw %}
 {% endhighlight %}
 
-# Data files
+## Data files
 
 Usually stored in ``_data`` folder. 
 
@@ -510,7 +526,7 @@ Example
 {% endraw %}
 {% endhighlight %}
 
-# Static files
+## Static files
 
 It could be any files, e.g. graphics, text, etc. They may be stored in any folder, e.g. ``assets``. 
 
@@ -554,7 +570,7 @@ Using a static file:
 {% endraw %}
 {% endhighlight %}
 
-# Hosting on GitHub pages
+## Hosting on GitHub pages
 
 - create a repository in your GitHub account _without the ``README.md`` file_ (the ``Initialize this repository with a README`` option should be unchecked)
 - modify the ``baseurl`` variable in ``_config.yml`` by inserting the remote repository name
@@ -607,6 +623,37 @@ git push origin gh-pages
 
 ``https://KONTO-GITHUB-sites.github.io/REPO_NAME/``
 
-# Tutorials
+## Tutorials
+
+Mike Dane’s tutorial:
+
+- [``Introduction | Jekyll - Static Site Generator | Tutorial 1``](https://www.youtube.com/watch?time_continue=9&v=T1itpPvFWHI&feature=emb_logo)
+- [``Mac Installation | Jekyll - Static Site Generator | Tutorial 2``](https://www.youtube.com/watch?v=WhrU9m82Wm8&t=24s)        
+- [``Windows Installation | Jekyll - Static Site Generator | Tutorial 3``](https://www.youtube.com/watch?v=LfP7Y9Ja6Qc&t=12s)
+- [``# Front Matter | Jekyll - Static Site Generator | Tutorial 5``]([https://www.youtube.com/watch?v=ZtEbGztktvc``](https://www.youtube.com/watch?v=ZtEbGztktvc))
+- [``# Writing Posts | Jekyll - Static Site Generator | Tutorial 6``]([https://www.youtube.com/watch?v=gsYqPL9EFwQ``](https://www.youtube.com/watch?v=gsYqPL9EFwQ))
+- [``# Working With Drafts | Jekyll - Static Site Generator | Tutorial 7``](https://www.youtube.com/watch?v=X8jXkW3k2Jg)        
+- [``# Creating Pages | Jekyll - Static Site Generator | Tutorial 8``](https://www.youtube.com/watch?v=1na-IWfv08M)
+- [``# Permalinks | Jekyll - Static Site Generator | Tutorial 9``](https://www.youtube.com/watch?v=938jDG_YPdc)
+- [``# Front Matter Defaults | Jekyll - Static Site Generator | Tutorial 10``](https://www.youtube.com/watch?v=CLCaJJ1zUHU)
+- [``# Themes | Jekyll - Static Site Generator | Tutorial 11``](https://www.youtube.com/watch?v=NoRS2D-cyko)
+- [``# Layouts | Jekyll - Static Site Generator | Tutorial 12``](https://www.youtube.com/watch?v=bDQsGdCWv4I)
+- [``# Variables | Jekyll - Static Site Generator | Tutorial 13``](https://www.youtube.com/watch?v=nLJBF2KiOZw)
+- [``# Includes | Jekyll - Static Site Generator | Tutorial 14``](https://www.youtube.com/watch?v=HfcJeRby2a8)
+- [``# Looping Through Posts | Jekyll - Static Site Generator | Tutorial 15``](https://www.youtube.com/watch?v=6N1X5XffuUA)
+- [``# Conditionals | Jekyll - Static Site Generator | Tutorial 16``](https://www.youtube.com/watch?v=iNZBEki_x6o)
+- [``# Data Files | Jekyll - Static Site Generator | Tutorial 17``](https://www.youtube.com/watch?v=M6b0KmLB-pM)
+- [``# Static Files | Jekyll - Static Site Generator | Tutorial 18``](https://www.youtube.com/watch?v=knWjmVlVpso)
+- [``# Hosting on Github Pages | Jekyll - Static Site Generator | Tutorial 19``](https://www.youtube.com/watch?v=fqFjuX4VZmU)
+
+
+
+
+
+
+
+
+
+
 
 
