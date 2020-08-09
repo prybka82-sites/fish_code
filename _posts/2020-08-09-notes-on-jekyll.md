@@ -582,7 +582,7 @@ git add .
 - commit all files:
 
 {% highlight bash %}
-git commit -m "nazwa migawki"
+git commit -m "commit description"
 {% endhighlight %}
 
 - connect the local repo to the remote one:
@@ -605,7 +605,7 @@ git push origin gh-pages
 
 - check for the link to your site in remote repo setting, GitHub Pages section, e.g. 
 
-``https://KONTO-GITHUB-sites.github.io/NAZWA-STRONY/``
+``https://KONTO-GITHUB-sites.github.io/REPO_NAME/``
 
 # Tutorials
 
