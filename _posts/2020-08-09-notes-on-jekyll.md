@@ -1,5 +1,5 @@
 ---
-layout: default #post
+layout: post
 title:  "Notes on Jekyll"
 date:   2020-08-09 14:22:10 +0200
 categories: notes
