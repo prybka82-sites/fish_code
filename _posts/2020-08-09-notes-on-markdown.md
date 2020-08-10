@@ -191,7 +191,6 @@ See: [Support starting numbered lists with arbritray number](https://github.com/
 {% highlight markdown %}
 ![alternative text](https://img.freepik.com/free-vector/vintage-logo-style-bear_225004-570.jpg?size=626&ext=jpg)
 {% endhighlight %}
-
 ![alternative text](https://img.freepik.com/free-vector/vintage-logo-style-bear_225004-570.jpg?size=626&ext=jpg)
 
 - from folder (``assets/images/example.jpg``)
@@ -201,6 +200,16 @@ See: [Support starting numbered lists with arbritray number](https://github.com/
 {% endhighlight %}
 
 ![alternative text]({{ site.baseurl }}/assets/images/example.jpg)
+
+- setting size
+
+{% highlight markdown %}
+![pictue]({{ site.baseurl }}/assets/images/example.jpg){:height="90px" width="190px"}
+{% endhighlight %}
+
+![picute]({{ site.baseurl }}/assets/images/example.jpg){:height="90px" width="190px"}
+
+See: [Changing image size in Markdown](https://stackoverflow.com/questions/14675913/changing-image-size-in-markdown).
 
 ## Quotes
 
