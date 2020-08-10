@@ -1,18 +1,18 @@
 ---
 layout: post
 title:  "Notes on Markdown"
-date:   2020-08-09 14:22:10 +0200
 categories: notes
-tags: notes linux windows markdown
+tags: notes markdown
 ---
 
-## Jekyll Markdown
+**Jekyll Markdown**
 
 Sources: 
 - [Jekyll Markdown Quick Reference](https://gist.github.com/roachhd/779fa77e9b90fe945b0c)
 - [Jekyll Markdown Support](https://www.markdownguide.org/tools/jekyll/)
+- [Hot to link to part of the same document in Markdown](https://stackoverflow.com/questions/2822089/how-to-link-to-part-of-the-same-document-in-markdown)
 
-### Basic formatting
+## Basic formatting
 
 {% highlight markdown %}
 _italics_ *italics*
@@ -48,7 +48,7 @@ int x = 5;
 int x = 5;
 {% endhighlight %}
 
-### Line breaks
+## Line breaks
 
 {% highlight markdown %}
 No
@@ -76,7 +76,7 @@ Line
 
 break
 
-### Lists
+## Lists
 
 Bulletted lists
 
@@ -112,17 +112,37 @@ Ordered lists
 2. Item 2
 3. Item 3
 
-### Paragraphs
+Setting the exact number (kramdown)
 
 {% highlight markdown %}
+{% raw %}
+1. Item 1
+
+{:start="5"}
+3. Item 3
+{% endraw %}
+{% endhighlight %}
+
+1. Item 1
+
+{:start="5"}
+3. Item 3
+
+See: [Support starting numbered lists with arbritray number](https://github.com/gettalong/kramdown/issues/211#issuecomment-256508905)
+
+## Paragraphs
+
+{% highlight markdown %}
+{% raw %}
 ## Header 2     # H1 is reserved for post titles!!!
 ### Header 3
 #### Header 4
 ##### Header 5
 ###### Header 6
+{% endraw %}
 {% endhighlight %}
 
-### Hyperlinks
+## Hyperlinks
 
 - alternative text hyperlink:
 
@@ -140,7 +160,31 @@ Ordered lists
 
 <http://actual-address.com>
 
-### Images
+- referencing the headers within the document
+
+{% highlight markdown %}
+{% raw %}
+[your link here](#line-breaks)
+{% endraw %}
+{% endhighlight %}
+
+[your link here](#line-breaks)
+
+- referencing ``<a/>`` anchrors: 
+
+{% highlight markdown %}
+{% raw %}
+[your link here](#anchor-name)
+
+<a name="anchor-name"></a>
+{% endraw %}
+{% endhighlight %}
+
+[your link here](#anchor-name)
+
+<a name="anchor-name"></a>
+
+## Images
 
 - from Web
 
@@ -158,7 +202,7 @@ Ordered lists
 
 ![alternative text]({{ site.baseurl }}/assets/images/example.jpg)
 
-### Quotes
+## Quotes
 
 {% highlight markdown %}
 > Quote
@@ -170,7 +214,7 @@ Ordered lists
 >> Nested quote
 >>> Nested quote
 
-### Horizontal lines
+## Horizontal lines
 
 {% highlight markdown %}
 ----
@@ -182,7 +226,7 @@ Ordered lists
 
 ****
 
-### Tables
+## Tables
 
 {% highlight markdown %}
 | Head1 | Head2 | Head3 |
@@ -196,7 +240,7 @@ Ordered lists
 | Value | Value | Value |
 | Text | Text | Text |
 
-### Escape sequences
+## Escape sequences
 
 {% highlight markdown %}
 \* `` ` `` \\ \` \_ \{ \} \[ \] \( \) \# \+ \- \. \! \|

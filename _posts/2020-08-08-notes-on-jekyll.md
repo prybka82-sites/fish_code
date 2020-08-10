@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "Notes on Jekyll"
-date:   2020-08-08 14:22:10 +0200
 categories: notes
 tags: notes linux windows jekyll
 ---
